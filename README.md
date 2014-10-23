@@ -7,7 +7,7 @@ A [Hubot](https://github.com/github/hubot) plugin to tell you what [BART](http:/
     hubot bart - next six BART train departures
 
 ### Installation
-1. Edit `package.json` and add `hubot-bart` as a dependency.
+1. Edit your `hubot/package.json` and add `hubot-bart` as a dependency.
 2. Add `"hubot-bart"` to your `external-scripts.json` file.
 3. `npm install`
 4. Restart Hubot.
