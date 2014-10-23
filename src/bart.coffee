@@ -31,7 +31,7 @@ module.exports = (robot) ->
       if res.statusCode is 200 and !err
         parser = new xml2js.Parser()
         parser.parseString body, (err, result) ->
-          msg.send "Next 6 BART trains departing from " + result.root.station[0].name + " station."
+          msg.send "Trains departing soon from " + result.root.station[0].name + " station:"
           for dest in result.root.station[0].etd
             for est in dest.estimate
               line = dest.destination.toString().split('/')[0]

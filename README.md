@@ -1,4 +1,4 @@
-## hubot-bart [![NPM version](https://badge.fury.io/js/hubot-spoonrocket.png)](http://badge.fury.io/js/hubot-spoonrocket)
+## hubot-bart [![NPM version](https://badge.fury.io/js/hubot-bart.png)](http://badge.fury.io/js/hubot-bart)
 
 A [Hubot](https://github.com/github/hubot) plugin to tell you what [BART](http://www.bart.gov/) trains are coming soon.
 
