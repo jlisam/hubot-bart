@@ -22,8 +22,6 @@ station = 'MONT'
 apikey = 'MW9S-E7SL-26DU-VV8V'
 url = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=#{station}&key=#{apikey}"
 
-trains = { South:[], North:[] }
-
 module.exports = (robot) ->
   robot.respond /bart/i, (msg) ->
     msg.http(url)
@@ -31,11 +29,14 @@ module.exports = (robot) ->
       if res.statusCode is 200 and !err
         parser = new xml2js.Parser()
         parser.parseString body, (err, result) ->
-          msg.send "Trains departing soon from " + result.root.station[0].name + " station:"
+          trains = { South:[], North:[] }
           for dest in result.root.station[0].etd
             for est in dest.estimate
-              line = dest.destination.toString().split('/')[0]
-              trains[est.direction[0]].push(' ' + est.minutes + 'm ' + line)
+              if (Math.floor(est.minutes) > 0)
+                line = dest.destination.toString().split('/')[0]
+                trains[est.direction[0]].push(est.minutes + 'm ' + line + ' ')
+          msg.send "Trains departing soon from " + result.root.station[0].name + " station: "
           for direction,estimates of trains
             estimates.sort(naturalSort)
-            msg.send direction + "bound:" + estimates[0..5].toString()
+            text = if (estimates.length) then estimates[0..5].toString() else 'None'
+            msg.send direction + "bound: " + text
