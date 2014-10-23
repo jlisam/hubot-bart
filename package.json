@@ -1,0 +1,34 @@
+{
+  "name": "hubot-bart",
+  "description": "A Hubot script to pull realtime BART train departure information.",
+  "version": "1.0.0",
+  "author": "Peter Tripp <petertripp@gmail.com>",
+  "license": "MIT",
+
+  "keywords": [
+    "hubot",
+    "hubot-bart",
+    "BART",
+    "train",
+    "timetable",
+    "schedule",
+    "sf"
+  ],
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/notpeter/hubot-bart.git"
+  },
+
+  "bugs": {
+    "url": "https://github.com/notpeter/hubot-bart/issues"
+  },
+
+  "dependencies": {
+    "coffee-script": "~1.6",
+    "xml2js": "",
+    "javascript-natural-sort": ""
+  },
+
+  "main": "./src/bart.coffee",
+}
