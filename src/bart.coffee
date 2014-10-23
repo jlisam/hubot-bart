@@ -30,13 +30,16 @@ module.exports = (robot) ->
         parser = new xml2js.Parser()
         parser.parseString body, (err, result) ->
           trains = { South:[], North:[] }
-          for dest in result.root.station[0].etd
-            for est in dest.estimate
-              if (Math.floor(est.minutes) > 0)
-                line = dest.destination.toString().split('/')[0]
-                trains[est.direction[0]].push(est.minutes + 'm ' + line + ' ')
-          msg.send "Trains departing soon from " + result.root.station[0].name + " station: "
-          for direction,estimates of trains
-            estimates.sort(naturalSort)
-            text = if (estimates.length) then estimates[0..5].toString() else 'None'
-            msg.send direction + "bound: " + text
+          if not result.root.message[0]
+            msg.send "BART trains departing soon from " + result.root.station[0].name
+            for dest in result.root.station[0].etd
+              for est in dest.estimate
+                if (Math.floor(est.minutes) > 0)
+                  line = dest.destination.toString().split('/')[0]
+                  trains[est.direction[0]].push(' ' + est.minutes + 'm ' + line)
+            for direction,estimates of trains
+              estimates.sort(naturalSort)
+              text = if (estimates.length) then estimates[0..5].toString() else 'None'
+              msg.send direction + "bound: " + text
+          else
+            msg.send "No BART trains departing soon from " + result.root.station[0].name
