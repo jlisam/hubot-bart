@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/notpeter/hubot-bart",
   "dependencies": {
-    "coffee-script": "~1.6",
     "xml2js": "*",
     "javascript-natural-sort": "*"
   }
