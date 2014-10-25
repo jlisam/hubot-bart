@@ -1,7 +1,7 @@
 {
   "name": "hubot-bart",
-  "description": "A Hubot script to pull realtime BART train departure information.",
-  "version": "1.0.3",
+  "description": "Hubot script to query realtime BART departures.",
+  "version": "1.0.4",
   "main": "./src/bart",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "sf",
     "oakland"
   ],
-  "author": "Peter Tripp <petertripp@gmail.com> (http://github.com/notpeter/)",
+  "author": "Peter Tripp @notpeter (http://github.com/notpeter/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/notpeter/hubot-bart/issues"
