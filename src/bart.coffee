@@ -31,7 +31,7 @@ module.exports = (robot) ->
         parser.parseString body, (err, result) ->
           trains = { South:[], North:[] }
           if not result.root.message[0]
-            msg.send "BART trains departing soon from " + result.root.station[0].name ':'
+            msg.send "BART trains departing soon from " + result.root.station[0].name + ':'
             for dest in result.root.station[0].etd
               for est in dest.estimate
                 if (Math.floor(est.minutes) > 0)
