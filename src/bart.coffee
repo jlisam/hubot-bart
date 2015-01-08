@@ -18,7 +18,7 @@ xml2js = require 'xml2js'
 naturalSort = require 'javascript-natural-sort'
 
 # Station abbreviation list: http://api.bart.gov/docs/etd/etd.aspx
-station = 'MONT'
+station = process.env.HUBOT_BART_STATION
 apikey = 'MW9S-E7SL-26DU-VV8V'
 url = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=#{station}&key=#{apikey}"
 
