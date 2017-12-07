@@ -18,3 +18,11 @@ describe 'example script', ->
       	['alice', '@hubot bart from BALB']
       	['hubot', 'No apikey supplied']
       ]
+  it 'will respond with a list of stations', ->
+    process.env['BART_API_KEY'] = "123"   
+    @room.user.say('alice', '@hubot bart from xyz').then =>
+
+      expect(@room.messages).to.eql [
+        ['alice', '@hubot bart from xyz']
+        ['hubot', "Station xyz is not in the list, execute the `list` command to find station names"]
+      ]
