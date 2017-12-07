@@ -1,7 +1,7 @@
 {
   "name": "hubot-bart-train",
   "description": "Hubot script to query realtime BART departures.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./src/bart",
   "repository": {
     "type": "git",
