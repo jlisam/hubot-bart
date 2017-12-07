@@ -10,20 +10,20 @@
 #
 # Commands:
 #   hubot bart - next six BART train departures
-#
-# Author:
-#   Peter Tripp
+
 
 xml2js = require 'xml2js'
 naturalSort = require 'javascript-natural-sort'
 
 # Station abbreviation list: http://api.bart.gov/docs/etd/etd.aspx
-station = process.env.HUBOT_BART_STATION || 'MONT'
-apikey = 'MW9S-E7SL-26DU-VV8V'
-url = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=#{station}&key=#{apikey}"
 
 module.exports = (robot) ->
-  robot.respond /bart/i, (msg) ->
+  robot.respond /bart from (.+)/i , (msg) ->
+    station = msg.match[1] || 'MONT'
+    apikey = process.env.BART_API_KEY
+    if !apikey
+      return msg.send "No apikey supplied"
+    url = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=#{station}&key=#{apikey}"    
     msg.http(url)
     .get() (err, res, body) ->
       if res.statusCode is 200 and !err
